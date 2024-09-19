@@ -1,0 +1,47 @@
+{
+  "title": "Generic-Company Discovery Exercise",
+  "type": "quiz",
+  "settings": {},
+  "workspace": {
+    "href": "https://api.typeform.com/workspaces/ned6Jf"
+  },
+  "fields": [
+    {
+      "ref": "number",
+      "title": "What is your favourite number?",
+      "type": "ranking",
+      "properties": {
+        "description": "Pick from the following options.",
+        "choices": [
+          { "ref": "1", "label": "1" },
+          { "ref": "2", "label": "2" },
+          { "ref": "3", "label": "3" },
+          { "ref": "4", "label": "4" },
+          { "ref": "5", "label": "5" },
+          { "ref": "6", "label": "6" },
+          { "ref": "7", "label": "7" },
+          { "ref": "8", "label": "8" },
+          { "ref": "9", "label": "9" },
+          { "ref": "10", "label": "10" }
+        ]
+      }
+    },
+    {
+      "ref": "happiness",
+      "title": "What is your favourite number?",
+      "type": "opinion_scale",
+      "properties": {
+        "description": "Pick from the following options.",
+        "start_at_one": true
+      }
+    },
+    {
+      "ref": "identity",
+      "title": "Who is Generic-Company?",
+      "type": "long_text",
+      "properties": {
+        "description": "What do you tell someone you just met, your family, or someone at a dinner party?"
+      }
+    }
+  ]
+}
