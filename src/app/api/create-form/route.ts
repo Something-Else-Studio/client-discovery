@@ -3,7 +3,6 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   try {
     const { clientName, formBody } = await req.json();
-    console.log("Hello", clientName);
 
     const personalizedFormBody = JSON.stringify(formBody).replaceAll(
       "Generic-Company",

@@ -2,6 +2,7 @@
 import { createContext, useContext, useState, ReactNode } from "react";
 
 export interface FormType {
+  id: string;
   title: string;
   type: "quiz";
   settings: unknown;

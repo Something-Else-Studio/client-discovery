@@ -1,8 +1,12 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET() {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const { id } = params;
   try {
-    const response = await fetch(`https://api.typeform.com/forms`, {
+    const response = await fetch(`https://api.typeform.com/forms/${id}`, {
       cache: "no-store",
       method: "GET",
       headers: {
@@ -18,8 +22,7 @@ export async function GET() {
     }
 
     const data = await response.json();
-    console.log(data.items[0]);
-    return NextResponse.json({ success: true, data: data.items[0] });
+    return NextResponse.json({ success: true, data });
   } catch (error) {
     console.error("Error creating form:", error);
     return NextResponse.json(

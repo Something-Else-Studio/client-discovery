@@ -1,30 +1,27 @@
-import { useData } from "@/app/context/FormContext";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 import { ActionButton } from "./ActionButton";
 
 export const NewFormSuccessMessage: React.FC = () => {
   const [latestFormIdLoaded, setLatestFormIdLoaded] = useState(false);
+  const [latestFormId, setLatestFormId] = useState<string>();
 
-  const { data, setData } = useData();
   const router = useRouter();
 
   useEffect(() => {
     const retrieveLatestForm = async () => {
       try {
         const response = await fetch("/api/retrieve-latest-form", {
+          cache: "no-store",
           method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
         });
 
-        const data = await response.json();
-        if (data.success) {
-          setData(data);
-        } else {
-          console.error(data.error);
-        }
+        const latestFormData = await response.json();
+        console.log(latestFormData);
+        setLatestFormId(latestFormData.data.id);
       } catch (error) {
         console.error(error);
       } finally {
@@ -33,10 +30,10 @@ export const NewFormSuccessMessage: React.FC = () => {
     };
 
     retrieveLatestForm();
-  }, [setData]);
+  }, []);
 
   const handleNavigation = () => {
-    router.push("/brand-exercise");
+    router.push(`/brand-exercise/${latestFormId}`);
   };
 
   return (
@@ -45,7 +42,7 @@ export const NewFormSuccessMessage: React.FC = () => {
       <span className="animate-pulse">
         {!latestFormIdLoaded ? "Retrieving new form..." : "Now ready to view"}
       </span>
-      {latestFormIdLoaded && data && (
+      {latestFormIdLoaded && latestFormId && (
         <ActionButton onClickFunction={handleNavigation} />
       )}
     </div>

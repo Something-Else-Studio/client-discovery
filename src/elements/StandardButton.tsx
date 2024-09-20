@@ -1,5 +1,5 @@
 export const StandardButton: React.FC<{
-  isLoading: boolean;
+  isLoading?: boolean;
   loadingText?: string;
   text: string;
 }> = ({ isLoading, loadingText = "Loading...", text }) => {
