@@ -15,7 +15,7 @@ const OpinionScale: React.FC<OpinionScaleProps> = ({ field, onNext }) => {
     if (value !== null) {
       const opinionScaleResponse = {
         field: { id: field.id },
-        type: "number",
+        type: "opinion_scale",
         number: value,
       };
       onNext(opinionScaleResponse);

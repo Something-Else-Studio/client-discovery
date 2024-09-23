@@ -1,19 +1,14 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { useData } from "@/app/context/FormContext";
 import { useEffect, useState } from "react";
-import { FormField } from "./ClientExerciseWrapper";
-import ClientExerciseWrapper from "./ClientExerciseWrapper";
-import { FieldResponse } from "@/utils/types";
+import TypeformEmbed from "./TypeformEmbed";
 
 export const ClientExercise: React.FC<{ clientFormId: string }> = ({
   clientFormId,
 }) => {
   const { data, setData } = useData();
   const [formsLoading, setFormsLoading] = useState(true);
-  const [submissionLoading, setSubmissionLoading] = useState(false);
-  const [isSuccessful, setIsSuccessful] = useState(false);
 
   useEffect(() => {
     if (!data) {
@@ -54,44 +49,11 @@ export const ClientExercise: React.FC<{ clientFormId: string }> = ({
     return <p>Loading...</p>;
   }
 
-  const handleSubmit = async (responses: FieldResponse[], formId: string) => {
-    setSubmissionLoading(true);
-
-    const responseBody = {
-      form_id: formId,
-      answers: Object.values(responses),
-    };
-
-    try {
-      const response = await fetch("/api/post-form-response", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(responseBody),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        setIsSuccessful(true);
-      } else {
-        console.error(data.error);
-      }
-    } catch (error) {
-      console.error(error);
-    } finally {
-      setSubmissionLoading(false);
-    }
-  };
-
   return (
     <div>
       {data ? (
-        <ClientExerciseWrapper
-          formId={clientFormId}
-          fields={data.fields as FormField[]}
-          onSubmit={handleSubmit}
+        <TypeformEmbed
+          formUrl={`https://l5ha1tgm985.typeform.com/to/${data.id}`}
         />
       ) : (
         <p>

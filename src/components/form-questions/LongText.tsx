@@ -7,10 +7,10 @@ interface LongTextProps {
 }
 
 const LongText: React.FC<LongTextProps> = ({ field, onNext }) => {
-  const [value, setValue] = useState<string>("");
+  const [value, setValue] = useState<string>();
 
   const handleSubmit = () => {
-    if (value.trim()) {
+    if (value?.trim()) {
       const textResponse = {
         field: { id: field.id },
         type: "text",
@@ -28,7 +28,7 @@ const LongText: React.FC<LongTextProps> = ({ field, onNext }) => {
         value={value}
         onChange={(e) => setValue(e.target.value)}
       />
-      <button onClick={handleSubmit} disabled={!value.trim()}>
+      <button onClick={handleSubmit} disabled={!value?.trim()}>
         Next
       </button>
     </div>

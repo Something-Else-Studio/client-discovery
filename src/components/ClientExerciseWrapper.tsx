@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState } from "react";
 import OpinionScale from "./form-questions/OpinionScale";
 import LongText from "./form-questions/LongText";
@@ -6,17 +5,10 @@ import Ranking, { RankingField } from "./form-questions/Ranking";
 import ProgressBar from "@/elements/ProgressBar";
 import { FieldResponse, LongTextField, OpinionScaleField } from "@/utils/types";
 
-export interface FormField {
-  id: string;
-  type: string;
-  title: string;
-  properties: any;
-}
-
 interface ClientExerciseWrapperProps {
   formId: string;
-  fields: FormField[];
-  onSubmit: (responses: any, formId: string) => Promise<void>;
+  fields: (OpinionScaleField | RankingField | LongTextField)[];
+  onSubmit: (responses: FieldResponse[], formId: string) => Promise<void>;
 }
 
 const ClientExerciseWrapper: React.FC<ClientExerciseWrapperProps> = ({
@@ -24,15 +16,13 @@ const ClientExerciseWrapper: React.FC<ClientExerciseWrapperProps> = ({
   fields,
   onSubmit,
 }) => {
-  const [currentStep, setCurrentStep] = useState(0);
-  const [responses, setResponses] = useState<any>({});
+  const [currentStep, setCurrentStep] = useState(1);
+  const [responses, setResponses] = useState<FieldResponse[]>([]);
 
   const handleNext = (response: FieldResponse) => {
-    setResponses((prevResponses: any) => ({
-      ...prevResponses,
-      [fields[currentStep].id]: response,
-    }));
-    if (currentStep < fields.length - 1) {
+    setResponses((prevResponses) => [...prevResponses, response]);
+
+    if (currentStep < fields.length) {
       setCurrentStep((prevStep) => prevStep + 1);
     } else {
       onSubmit(responses, formId);
@@ -40,7 +30,7 @@ const ClientExerciseWrapper: React.FC<ClientExerciseWrapperProps> = ({
   };
 
   const renderField = () => {
-    const field = fields[currentStep];
+    const field = fields[currentStep - 1];
     switch (field.type) {
       case "opinion_scale":
         return (
