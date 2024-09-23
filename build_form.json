@@ -8,7 +8,7 @@
   "fields": [
     {
       "ref": "number",
-      "title": "What is your favourite number?",
+      "title": "What is Generic-Company's favourite number? (example of an 'order of preference' question)",
       "type": "ranking",
       "properties": {
         "description": "Pick from the following options.",
@@ -28,7 +28,7 @@
     },
     {
       "ref": "happiness",
-      "title": "What is your favourite number?",
+      "title": "How would you rate Generic-Company? (example of a 'slider' question - at the moment just clickable not draggable)",
       "type": "opinion_scale",
       "properties": {
         "description": "Pick from the following options.",
@@ -37,7 +37,7 @@
     },
     {
       "ref": "identity",
-      "title": "Who is Generic-Company?",
+      "title": "Who is Generic-Company? (example of a long text question)",
       "type": "long_text",
       "properties": {
         "description": "What do you tell someone you just met, your family, or someone at a dinner party?"
