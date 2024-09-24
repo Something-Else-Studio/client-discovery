@@ -13,10 +13,10 @@ const TypeformEmbed: React.FC<TypeformEmbedProps> = ({ formUrl }) => {
     router.push("/results");
   };
   return (
-    <div style={{ height: "500px" }}>
+    <div className="flex justify-center items-center h-[500px] w-full max-w-4xl mx-auto md:h-[400px] sm:h-[300px]">
       <Widget
         id={formUrl}
-        style={{ width: "100%", height: "100%" }}
+        className="w-full h-full rounded-lg shadow-lg overflow-hidden"
         hideHeaders={true}
         hideFooter={true}
         onSubmit={handleSubmit}
