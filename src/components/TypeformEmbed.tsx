@@ -4,13 +4,14 @@ import { useRouter } from "next/navigation";
 
 interface TypeformEmbedProps {
   formUrl: string;
+  formId: string;
 }
 
-const TypeformEmbed: React.FC<TypeformEmbedProps> = ({ formUrl }) => {
+const TypeformEmbed: React.FC<TypeformEmbedProps> = ({ formUrl, formId }) => {
   const router = useRouter();
 
   const handleSubmit = () => {
-    router.push("/results");
+    router.push(`/responses/${formId}`);
   };
   return (
     <div className="flex justify-center items-center h-[500px] w-full max-w-4xl mx-auto md:h-[400px] sm:h-[300px]">

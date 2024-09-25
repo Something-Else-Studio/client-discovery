@@ -7,8 +7,9 @@ import TypeformEmbed from "./TypeformEmbed";
 export const ClientExercise: React.FC<{ clientFormId: string }> = ({
   clientFormId,
 }) => {
+  const [formFetched, setFormFetched] = useState(false);
   const { data, setData } = useData();
-  const [formsLoading, setFormsLoading] = useState(true);
+  const [formLoading, setFormLoading] = useState(true);
 
   useEffect(() => {
     if (!data) {
@@ -28,38 +29,36 @@ export const ClientExercise: React.FC<{ clientFormId: string }> = ({
           const result = await response.json();
           if (result.success) {
             console.log(result.data);
-            setData(result.data);
+            setFormFetched(true);
           } else {
             console.error(result.error);
           }
         } catch (error) {
           console.error(error);
         } finally {
-          setFormsLoading(false);
+          setFormLoading(false);
         }
       };
 
       retrieveLatestForm();
     } else {
-      setFormsLoading(false);
+      setFormLoading(false);
     }
   }, [data, setData, clientFormId]);
 
-  if (formsLoading) {
+  if (formLoading) {
     return <p>Loading...</p>;
   }
 
   return (
     <div>
-      {data ? (
+      {formFetched && (
         <TypeformEmbed
-          formUrl={`https://l5ha1tgm985.typeform.com/to/${data.id}`}
+          formUrl={`https://l5ha1tgm985.typeform.com/to/${clientFormId}`}
+          formId={clientFormId}
         />
-      ) : (
-        <p>
-          No data available. Please return to the home page and load the data.
-        </p>
       )}
+      {formLoading && <div>Loading...</div>}
     </div>
   );
 };
