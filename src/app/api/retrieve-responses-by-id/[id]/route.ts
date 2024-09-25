@@ -25,8 +25,12 @@ export async function GET(
     }
 
     const data = await response.json();
-    console.log(data.items[0]);
-    return NextResponse.json({ success: true, data: data.items[0] });
+    console.log(data.items);
+    if (Array.isArray(data.items)) {
+      return NextResponse.json({ success: true, data: data.items });
+    } else {
+      throw new Error("No items found in the response");
+    }
   } catch (error) {
     console.error("Error retrieving latest response:", error);
     return NextResponse.json(
