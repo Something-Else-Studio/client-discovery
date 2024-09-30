@@ -1,46 +1,114 @@
 {
   "title": "Generic-Company Discovery Exercise",
   "type": "quiz",
-  "settings": {},
   "workspace": {
     "href": "https://api.typeform.com/workspaces/ned6Jf"
   },
+  "welcome_screens": [
+    {
+      "title": "Generic-Company & Something Else",
+      "ref": "se_brand_kickoff_welcome",
+      "properties": {
+        "button_text": "Let's go!",
+        "description": "We'll cover: 1. Background | 2. Alignment | 3. Adjectives"
+      }
+    }
+  ],
   "fields": [
     {
-      "ref": "number",
-      "title": "What is Generic-Company's favourite number? (example of an 'order of preference' question)",
-      "type": "ranking",
+      "ref": "background_group",
+      "title": "Background",
+      "type": "group",
       "properties": {
-        "description": "Pick from the following options.",
-        "choices": [
-          { "ref": "1", "label": "1" },
-          { "ref": "2", "label": "2" },
-          { "ref": "3", "label": "3" },
-          { "ref": "4", "label": "4" },
-          { "ref": "5", "label": "5" },
-          { "ref": "6", "label": "6" },
-          { "ref": "7", "label": "7" },
-          { "ref": "8", "label": "8" },
-          { "ref": "9", "label": "9" },
-          { "ref": "10", "label": "10" }
+        "description": "Let's discuss who you are, your goals, your history, motivations, philosophy, the future, and what makes you unique.",
+        "fields": [
+          {
+            "ref": "identity",
+            "title": "Who is Generic-Company?",
+            "type": "long_text",
+            "properties": {
+              "description": "What do you tell someone you just met, your family, or someone at a dinner party?"
+            }
+          },
+          {
+            "ref": "industry",
+            "title": "What is Generic-Company's industry goal?",
+            "type": "long_text"
+          },
+          {
+            "ref": "business_goal",
+            "title": "What is Generic-Company's business goal?",
+            "type": "long_text"
+          }
+        ]
+      }
+    },
+
+    {
+      "ref": "alignment_group",
+      "title": "Alignment",
+      "type": "group",
+      "properties": {
+        "description": "How do you want to be perceived by your customers? What should your identity say about you to the world? Where should it be today and in the future?",
+        "fields": [
+          {
+            "ref": "logical_emotional",
+            "title": "Logical/Emotional",
+            "type": "opinion_scale",
+            "properties": {
+              "description": "With 1 being highly logical and 5 being highly emotional, where would you place Generic-Company?",
+              "start_at_one": true,
+              "steps": 5
+            }
+          },
+          {
+            "ref": "serene_excited",
+            "title": "Serene/Excited",
+            "type": "opinion_scale",
+            "properties": {
+              "description": "With 1 being serene and 5 being excited, where would you place Generic-Company?",
+              "start_at_one": true,
+              "steps": 5
+            }
+          }
         ]
       }
     },
     {
-      "ref": "happiness",
-      "title": "How would you rate Generic-Company? (example of a 'slider' question - at the moment just clickable not draggable)",
-      "type": "opinion_scale",
+      "ref": "adjectives_group",
+      "title": "Adjectives",
+      "type": "group",
       "properties": {
-        "description": "Pick from the following options.",
-        "start_at_one": true
-      }
-    },
-    {
-      "ref": "identity",
-      "title": "Who is Generic-Company? (example of a long text question)",
-      "type": "long_text",
-      "properties": {
-        "description": "What do you tell someone you just met, your family, or someone at a dinner party?"
+        "description": "Individually, and without discussion, select three adjectives that do and do not describe your brand.",
+        "fields": [
+          {
+            "ref": "we_are_adjectives",
+            "title": "We are...",
+            "type": "multiple_choice",
+            "properties": {
+              "description": "Think of unique words that will give your audience a sense of who you are and what makes you unique.",
+              "choices": [
+                { "ref": "absorbing", "label": "absorbing" },
+                { "ref": "adaptable", "label": "adaptable" },
+                { "ref": "adorable", "label": "adorable" }
+              ],
+              "allow_multiple_selection": true
+            }
+          },
+          {
+            "ref": "we_are_not_adjectives",
+            "title": "We are not...",
+            "type": "multiple_choice",
+            "properties": {
+              "description": "Think of unique words that might conflict with who you are.",
+              "choices": [
+                { "ref": "not_absorbing", "label": "absorbing" },
+                { "ref": "not_adaptable", "label": "adaptable" },
+                { "ref": "not_adorable", "label": "adorable" }
+              ]
+            }
+          }
+        ]
       }
     }
   ]

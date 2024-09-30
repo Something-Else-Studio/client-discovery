@@ -18,12 +18,11 @@ export async function GET() {
     }
 
     const data = await response.json();
-    console.log(data.items[0]);
     return NextResponse.json({ success: true, data: data.items[0] });
   } catch (error) {
-    console.error("Error creating form:", error);
+    console.error("Error retrieving latest form:", error);
     return NextResponse.json(
-      { success: false, error: "Failed to create form" },
+      { success: false, error: "Failed to retrieve latest form" },
       { status: 500 }
     );
   }

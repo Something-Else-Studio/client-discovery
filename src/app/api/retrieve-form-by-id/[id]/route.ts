@@ -24,9 +24,9 @@ export async function GET(
     const data = await response.json();
     return NextResponse.json({ success: true, data });
   } catch (error) {
-    console.error("Error creating form:", error);
+    console.error(`Error retrieving form with id: ${id}`, error);
     return NextResponse.json(
-      { success: false, error: "Failed to create form" },
+      { success: false, error: `Failed to retrieve form ${id}` },
       { status: 500 }
     );
   }

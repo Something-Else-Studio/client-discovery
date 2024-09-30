@@ -1,0 +1,55 @@
+"welcome_screens": [
+  {
+    "ref": "se_brand_kickoff_welcome",
+    "title": "Generic-Company & Something Else",
+    "properties": {
+      "button_text": "Let's go!"
+    }
+  },
+  {
+    "ref": "se_brand_kickoff_overview",
+    "title": "What we'll cover",
+    "properties": {
+      "description": "Background, alignment, adjectives, analogous and next steps."
+    }
+  }
+],
+
+
+
+
+
+
+
+    {
+      "ref": "alignment_group",
+      "title": "Alignment",
+      "type": "group",
+      "properties": {
+        "description": "How do you want to be perceived by your customers? What should your identity say about you to the world? Where should it be today and in the future?",
+        "fields": [
+          {
+            "ref": "logical_emotional",
+            "title": "Logical/Emotional",
+            "type": "opinion_scale",
+            "properties": {
+              "description": "With 1 being highly logical and 5 being highly emotional, where would you place Generic-Company?",
+              "start_at_one": true,
+              "steps": 5,
+              "shape": "star"
+            }
+          },
+          {
+            "ref": "serene_excited",
+            "title": "Serene/Excited",
+            "type": "opinion_scale",
+            "properties": {
+              "description": "With 1 being serene and 5 being excited, where would you place Generic-Company?",
+              "start_at_one": true,
+              "steps": 5,
+              "shape": "star"
+            }
+          }
+        ]
+      }
+    }
